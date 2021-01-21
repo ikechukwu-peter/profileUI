@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Pagination } from "./Pagination";
 import Records from "./Records";
+import styled from "styled-components";
+import Search from "./Search";
 
 const Profiles = () => {
   const [records, setRecords] = useState([]);
@@ -29,17 +31,25 @@ const Profiles = () => {
   return (
     <Fragment>
       {/* <SearchBar /> */}
-      <div>
-        <h2>PlaceHolders</h2>
+      <Box>
+        <h2>PROFILE CARD UI</h2>
+        <Search />
         <Records loading={loading} records={currentRecords} />
         <Pagination
           profilesPerPage={profilesPerPage}
           totalProfiles={records.length}
           paginate={paginate}
         />
-      </div>
+      </Box>
     </Fragment>
   );
 };
 
 export default Profiles;
+
+const Box = styled.div`
+  h2 {
+    text-align: center;
+    color: #b3b8cd;
+  }
+`;
