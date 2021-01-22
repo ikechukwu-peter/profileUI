@@ -13,7 +13,9 @@ const Profiles = () => {
   useEffect(() => {
     const fetchRecords = async () => {
       setLoading(true);
-      const response = await fetch("http://api.enye.tech/v1/challenge/records");
+      const response = await fetch(
+        "https://api.enye.tech/v1/challenge/records"
+      );
       const data = await response.json();
       setRecords(data.records.profiles);
       setLoading(false);
