@@ -35,7 +35,6 @@ const PageMove = styled.div`
     /* align-items: center; */
   }
   li {
-    
     border-radius: 10px;
     box-shadow: 0px 10px 20px -10px rgba(238, 237, 237, 0.809);
     list-style-type: none;
