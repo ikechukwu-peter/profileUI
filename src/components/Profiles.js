@@ -33,7 +33,7 @@ const Profiles = () => {
       {/* <SearchBar /> */}
       <Box>
         <h2>PROFILE CARD UI</h2>
-        <Search />
+        <Search profiles={records} />
         <Records loading={loading} records={currentRecords} />
         <Pagination
           profilesPerPage={profilesPerPage}

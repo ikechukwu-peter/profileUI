@@ -1,38 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-function Search(props) {
-  const { onSearch } = props;
-
-  const [searchText, setSearchText] = useState("");
+function Search({ profiles }) {
+  const [setQuery] = useState("");
+  const [search, setSearch] = useState("");
 
   const handleInput = (e) => {
-    const text = e.target.value;
-    setSearchText(text);
+    setSearch(e.target.value);
   };
 
-  const handleEnterKeyPressed = (e) => {
-    if (e.key === "Enter") {
-      onSearch(searchText);
-    }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setQuery(search);
+    setSearch("");
   };
   return (
     <div>
       <Box>
-        <SearchInput
-          onChange={handleInput}
-          onKeyPress={handleEnterKeyPressed}
-          type="text"
-          value={searchText}
-          placeholder="Search your profile"
-        />
-        <IconSearch class="fas fa-search"></IconSearch>
+        <SearchForm onSubmit={handleSearch}>
+          <SearchInput
+            onChange={handleInput}
+            type="text"
+            value={search}
+            placeholder="Search for profile"
+          />
+          <SearchButton type="submit">Search</SearchButton>
+        </SearchForm>
       </Box>
     </div>
   );
 }
-const SearchInput = styled.input`
 
+const SearchForm = styled.form`
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const SearchInput = styled.input`
   width: 100%;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: none;
@@ -41,15 +46,18 @@ const SearchInput = styled.input`
     outline: none;
   }
 `;
+const SearchButton = styled.button`
+  background: #03bfcb;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+`;
+
 const Box = styled.div`
-background-color:rgb(179, 184, 205);
-margin-bottom:2rem;
-border-radius:5px;
+  margin-bottom: 2rem;
+  border-radius: 5px;
   max-width: 30rem;
-  margin:  0 auto;
+  margin: 0 auto;
 `;
-const IconSearch = styled.i`
-  /* width: 1rem; */
-`;
+
 export default Search;
-  
