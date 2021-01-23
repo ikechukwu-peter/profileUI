@@ -15,7 +15,9 @@ export const Pagination = ({ profilesPerPage, totalProfiles, paginate }) => {
       <ul>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <a onClick={() => paginate(number)}>{number}</a>
+            <a style={{ cursor: "pointer" }} onClick={() => paginate(number)}>
+              {number}
+            </a>
           </li>
         ))}
       </ul>
